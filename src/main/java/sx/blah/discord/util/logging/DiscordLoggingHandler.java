@@ -29,20 +29,23 @@ import java.util.HashMap;
 import java.awt.Color;
 
 /**
- * @author Noah Simon
- *
+ * A Java logging handler to report events to a specific {@link IChannel}. Uses an embed by default.
+ * Use by adding an instance of this class to a {@link java.util.logging.Logger}.
+ * 
+ * @see java.util.logging
  */
 public class DiscordLoggingHandler extends Handler {
 	/**
-	 * 
+	 * The channel which the handler will send logs to.
 	 */
 	private IChannel channel;
 	/**
-	 * 
+	 * The default color map stored in {@link #colors}.
 	 */
 	public static final Map<Level, Color> DEFAULT_COLORS = makeDefaultColorsMap();
 	/**
-	 * @return
+	 * A method to create the map used in {@link #DEFAULT_COLORS}.
+	 * @return The created map.
 	 */
 	private static Map<Level, Color> makeDefaultColorsMap() {
 		Map<Level, Color> temp = new HashMap<Level, Color>();
@@ -56,47 +59,50 @@ public class DiscordLoggingHandler extends Handler {
 		return temp;
 	}
 	/**
-	 * 
+	 * The set of colors that are used for the embed, corresponding to the {@link #Level} of the logged event.
 	 */
 	private Map<Level, Color> colors;
 	
 	/**
-	 * @return
+	 * Get the map used to choose the embed color.
+	 * 
+	 * @return The current value of {@link #colors}.
 	 */
 	public Map<Level, Color> getColors() {
 		return this.colors;
 	}
 	
 	/**
-	 * @param colors
+	 * Set the map used to choose the embed color.
+	 * 
+	 * @param colors The map that will be used.
 	 */
 	public void setColors(Map<Level, Color> colors) {
 		this.colors = colors;
 	}
 	
 	/**
-	 * @return
+	 * Get the destination channel for logging messages.
+	 * 
+	 * @return The current value of {@link #channel}.
 	 */
 	public IChannel getChannel() {
 		return this.channel;
 	}
 	
 	/**
-	 * @param channel
+	 * Set the destination channel for logging messages.
+	 * 
+	 * @param channel The channel that will be used.
 	 */
 	public void setChannel(IChannel channel) {
 		this.channel = channel;
 	}
-
-	/**
-	 * 
-	 */
-	public DiscordLoggingHandler() {
-		this.colors = DEFAULT_COLORS;
-	}
 	
 	/**
-	 * @param channel
+	 * Creates a new handler set to send messages to the given channel.
+	 * 
+	 * @param channel The initial destination channel for logging messages.
 	 */
 	public DiscordLoggingHandler(IChannel channel) {
 		this.channel = channel;

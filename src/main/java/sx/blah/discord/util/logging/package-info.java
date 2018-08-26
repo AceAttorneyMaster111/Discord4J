@@ -16,6 +16,7 @@
  */
 
 /**
+ * This package contains utilities to connect the {@link java.util.logging} framework with discord4j.
  * 
  * @author Noah Simon
  */
